@@ -1,0 +1,936 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2019-2021 by Southern University of Science and Technology Computer Research Association <cra@sustech.edu.cn>
+%
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidersFile{neu.dtx}{2025/6/01 0.0.1 North University of China Thesis Template}
+\documentclass{ltxdoc}
+\usepackage{dtx-style}
+\EnableCrossrefs
+\CodelineIndex
+\begin{document}
+    \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \DoNotIndex{\newenvironment,\@bsphack,\@empty,\@esphack,\sfcode}
+% \DoNotIndex{\addtocounter,\label,\let,\linewidth,\newcount}
+% \DoNotIndex{\noindent,\normalfont,\par,\parskip,\phantomsection}
+% \DoNotIndex{\providecommand,\ProvidesPackage,\refstepcounter}
+% \DoNotIndex{\RequirePackage,\setcounter,\setlength,\string,\strut}
+% \DoNotIndex{\textbackslash,\texttt,\ttfamily,\usepackage}
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
+% \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\edef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\sffamily,\interlinepenalty}
+% \DoNotIndex{\textbf,\textit,\textsf,\textsc}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright,\ref}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
+% 
+% \GetFileInfo{\jobname.dtx}
+% 
+% 
+% \def\indexname{索引}
+% \IndexPrologue{\section{\indexname}}
+% 
+% \title{\bfseries\color{violet}\nucthesis ：中北大学学位论文模板}
+% \author{{\fangsong Norbury}\\{\fangsong 南方科技大学计算机研究协会 CRA}\\{\fangsong 清华大学 TUNA}\\[5pt]\texttt{NorburyMJ@outlook.com}}
+% \date{v\fileversion\ (\filedate)}
+% \maketitle\thispagestyle{empty}
+% 
+% 
+% \begin{abstract}\noindent
+%    此宏包旨在建立一个简单易用的中北大学学位论文模板。目前包括硕士论文。
+% \end{abstract}
+% 
+% \vskip2cm
+% \def\abstractname{免责声明}
+% \begin{abstract}
+% \noindent  
+% \begin{enumerate}
+% \item 本模板的发布遵守 \href{https://www.latex-project.org/lppl/lppl-1-3c.txt}{\LaTex{}Project Public License (1.3.c)}, 使用前请认真阅读协议内容。
+% \item 本模板为作者根据中北大学研究生院发布的\href{https://grs.nuc.edu.cn/info/1054/4413.htm}{《中北大学关于撰写研究生学位论文的统一要求(新)》(以下或改称为写作指南》)}
+% 编写而成，旨在供中北大学毕业生撰写学位论文使用，如有冲突请以官网规定为准。
+% \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵守 \LaTex{} Project Public License 协议。 由于违反协议而引起的任何纠纷争端均与本模板作者无关。
+\end{enumerate}
+% \end{abstract}
+% 
+% 
+% \clearpage
+% \pagestyle{fancy}
+% \begin{multicols}{2}[
+%   \setlength{\columnseprule}{.4pt}
+%   \setlength{\columnsep}{18pt}]
+% \tableofcontents
+% \end{multicols}
+% \clearpage
+% 
+% \section{模板介绍}
+% \nucthesis{} (\textbf{N}orth \textbf{U}niversity of \textbf{China} \LaTeX{} \textbf{Thesis} Template)
+% 是为了帮助中北大学毕业生撰写学位论文而编写的 \LaTeX{} 论文模板。
+% 
+% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处，或者想提出改进建议，
+% 可以在 \href{URL}{text}
+% 
+% \end{enumerate}
+% 
+% \section{贡献者}
+% \label{sec:contributors}
+%
+% \nucthesis{} 的开发过程中，参与的维护者包括：
+% 
+% \begin{itemize}
+% \item Norbury
+%
+%\end{itemize} 
+% 
+% \nucthesis{} 由 \thuthesis{}和 \sustechthesis{} 适配，感谢清华大学 TUNA 协会为模版易用性所做出的努力，感谢南方科技大学计算机协会。
+% \nucthesis{} 的持续发展，离不开你们的帮助与支持。
+% 
+% \section{安装}
+% \label{sec:installation}
+% 
+% 建议从下列途径下载最新发布版：
+% \begin{description}
+%   \item[GitHub] \url{}从 Release 下载 zip 版本。 
+% \end{description}
+% 
+% % 模板支持在 TeX Live、MacTeX 本地编译器和 Overleaf 在线平台下进行编译，但要求 2019 年或更新的发行版。
+% 当然，尽可能使用最新的版本可以避免 bug。
+% 
+% \subsection{模板的组成}
+% 下表列出了 \nucthesis{} 的主要文件及其功能介绍：
+% 
+% \begin{longtable}{l|p{8cm}} 
+% \toprule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% \endfirsthead
+% \midrule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% \endhead
+% \endfoot
+% \endlastfoot
+% nucthesis.ins & \textsc{DocStrip} 驱动文件（开发用） \\
+% nucthesis.dtx & \textsc{DocStrip} 源文件（开发用） \\\midrule
+% nucthesis.cls & 模板类文件 \\
+% nucthesis-example.tex & 示例文档主文件 \\
+% ref/ & 示例文档参考文献目录 \\
+% data/ & 示例文档章节具体内容 \\
+% figures/ & 示例文档图片路径 \\
+% nuc-setup.tex & 示例文档基本配置 \\\midrule
+% Makefile & Makefile \\
+% latexmkrc & latexmk 配置文件 \\
+% README.md & Readme \\
+% \textbf{nucthesis.pdf} & 用户手册（本文档）\\\bottomrule
+% \end{longtable}
+% 
+% 几点说明：
+% \begin{itemize}
+%   \item 使用前请阅读文档：\file{nucthesis.pdf}
+% \end{itemize}
+% 
+% \subsection{生成模板}
+% \label{sec:generate-cls}
+% 模板的源文件 （\file{nucthesis.dtx} 中包含了大量注释，需要将这些注释去除生成轻量级的 \file{.cls} 文件供 \cs{documentclass} 调用。
+% 
+% \begin{shell}
+%   $ xetex nucthesis.ins $
+% \end{shell}
+% 
+% 
+% \subsection{编译论文}
+% \label{sec:generate-thesis}
+% 本节介绍几种常见的生成论文的方法。用户可以根据自己的情况选择。
+% 
+% 在撰写论文时，我们 \textbf{不推荐} 使用原有的 \file{nucthesis-example.tex} 这一名称。
+% 建议复制一份，改作他名（如 \file(thesis.tex) 或者 \file{main.tex} ）。
+% 需要注意，如果使用了来自 \file{data} 目录中的 \file{tex} 文件，
+% 则重命名文件后，其顶端的 \texttt{!TeX root} 
+% 
+% \subsubsection{GNU make}
+% \label{sec:make}
+% 如果用户可以使用 GNU make 工具，这是最方便的办法。
+% 所以 \sustechthesis{} 提供了 \file{Makefile}：
+% \begin{shell}
+%   $ make thesis $   # 生成论文示例 sustechthesis-example.pdf 
+%   $ make doc  $     # 生成说明文档 sustechthesis.pdf
+%   $ make clean   $  # 清理编译生成的辅助文件
+% \end{shell}
+% \note[注意：]{Makefile 还提供其他命令，可以自行查看。}
+%
+% 需要注意，如果更改了主文件的名称，则需要修改 \file{Makefile} 顶端的 \texttt{THESIS} 变量定义。
+%
+% \subsubsection{latexmk}
+% \label{sec:latexmk}
+% \texttt{latexmk} 命令支持全自动生成 \LaTeX{} 编写的文档，并且支持使用不同的工具
+% 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。建议没有配置 GNU make 工具的 Windows 用户
+% 采用该种方式。
+% \begin{shell}
+%   $ latexmk sustechthesis-example.tex  # 生成示例论文 sustechthesis-example.pdf
+%   $ latexmk sustechthesis.dtx          # 生成说明文档 sustechthesis.pdf
+%   $ latexmk -c                         # 清理编译生成的辅助文件
+% \end{shell}
+% \texttt{latexmk} 的编译过程是通过 \file{latexmkrc} 文件来配置的，如果要进一步了解，
+% 可以参考 \pkg{latexmk} 文档。
+%
+% \subsubsection{\XeLaTeX}
+% \label{sec:xelatex}
+% 如果用户无法使用以上两种较为方便的编译方法，就只能按照以下复杂的办法手动编译。
+%
+% 首先，更新模板：
+% \begin{shell}
+%   $ xetex sustechthesis.ins                       # 生成 sustechthesis.cls
+% \end{shell}
+%
+% 然后，生成论文：
+% \begin{shell}
+%   $ xelatex sustechthesis-example.tex
+%   $ bibtex sustechthesis-example.aux              # 生成 bbl 文件
+%   $ xelatex sustechthesis-example.tex             # 解决引用
+%   $ xelatex sustechthesis-example.tex             # 生成论文 PDF
+% \end{shell}
+%
+% 下面的命令用来生成用户手册：
+% \begin{shell}
+%   $ xelatex -shell-escape sustechthesis.dtx
+%   $ makeindex -s gind.ist -o sustechthesis.ind sustechthesis.idx
+%   $ xelatex -shell-escape sustechthesis.dtx
+%   $ xelatex -shell-escape sustechthesis.dtx  # 生成说明文档 sustechthesis.pdf
+% \end{shell}
+% 
+% 
+% \subsection{升级}
+% \label{sec:upgrade}
+% 如果需要升级 \nucthesis{}，应当从 GitHub 下载最新的版本，
+% 将 \file{nucthesis.dtx} 和 \file{nucthesis.ins} 拷贝至工作目录覆盖相应的文件，然后按照第~\ref{sec:generate-cls} 节的内容生成性的模板和使用说明。
+% 
+% 有时模板可能进行了重要的修改，不兼容已写好的正文内容，用户应按照示例
+% 文档重新调整。
+% 
+% \section{使用说明}
+% \label{sec:usage}
+% 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 \hologo{BibTeX} 有一定了解。如果
+% 从未接触过 \TeX{} 和 \LaTeX，建议先学习相关的基础知识
+% 
+% \subsection{示例文件}
+% \label{sec:useguide}
+% 
+% 模板的核心文件有：\file{nucthesis.cls},
+% 但如果没有示例文档会较难下手，所以推荐从模板自带的示例文档入手，
+% 其中包括了论文写作所用到的所有命令及其使用方法，只需用自己的内容进行相应的替换即可。
+% 对于不清楚的命令可查询本手册。下面的例子描述了模板中章节的组织形式，具体内容可以参考模板附带的 \file{nucthesis-example.tex} 、\file{nucthesis-setup.tex} 和 \file{data/}
+% 
+% \subsection{论文选项}
+% \label{sec:option}
+% 绝大部分论文选项的设置位于 \file{nuc-setup.tex} 文件，对应选项附近也有相关注释。
+% 其他论文选项设置位于 \file{nucthesis-example.tex}。
+% 
+% 本节中的 \emph{key-value} 选项只能在文档类 \file{nucthesis-example.tex} 的选项中进行设置，
+% 不能用于 \file{nuc-setup.tex} 中的 \cs{nucsetup} 命令。
+% 
+% \subsubsection{学位}
+% \DescribeOption{degree}
+% 选择学位，可选：
+% \option{master} （默认），\option{doctor}。
+% 
+% \begin{latex}
+%   % 硕士论文
+%   \documentclass[degree=master]{nucthesis}
+% \end{latex}
+% 
+% \subsubsection{书写语言}
+% \DescribeOption{language}
+% 定义论文的主要语言，如标题章节等。
+% 在正文中设置 \option{language} 只修改接下来部分的书写语言，
+% 如标点格式，图标名称，但不影响章节标题等。
+% 
+% \begin{latex}
+%   % 英文为主要语言
+%   \documentclass[language=english]{nucthesis}
+% \end{latex}
+% 
+% 论文的一些部分（如英文摘要）要求使用特定的语言，
+% 模板已经进行配置，并在这些部分结束后自动恢复为主要语言。
+% 
+% 注意，\textbf{用户须提前与导师和院系的审查教师确认使用何种语言书写论文}。
+% 例如：部分院系允许（或要求）外籍导师的学生采用英文书写论文，然而中国籍导师的学生仅能使用中文。
+% 
+% 
+% \subsection{字体配置}
+% \label{sec:font-config}
+% 模板默认可以自动检测操作系统，并配置该平台上合适的字体。
+% 具体的配置策略如表~\ref{tab:font}。
+% 
+% \begin{table}[htb]
+%   \centering
+%   \caption{\nucthesis{} 自动配置字体策略}
+%   \label{tab:font}
+%   \begin{tabular}{ccc}
+%       \toprule
+%       Windows & maxOS & 其他 \\
+%       \midrule
+%       Times New Roman & Times New Roman & TeX Gyre Termes \\
+%       Arial & Arial & TeX Gyre Heros \\
+%       Courier & Courier & TeX Gyre Cursor \\
+%       中易宋体 & 华文宋体 & Fandol 宋体 \\
+%       中易黑体 & 华文黑体 & Fandol 黑体 \\
+%       \bottomrule
+%    \end{tabular}
+% \end{table}
+% 
+% 然而自动配置的字体只能保证编译通过，但是还存在一些问题：
+% \begin{enumerate}
+%   \item 在其他平台上配置的TeX Gyre 系列字体，虽然在风格上比较接近 Times 和 Arial，
+% 但是毕竟和《写作指南》要求的字体不一致；
+%   \item Fandol 字库的字形较少，常常出现缺字的情况；
+% 
+% \end{enumerate}
+% 
+% 所以建议在提交最终版前使用 Windows 平台的字体进行编译。
+%
+% 用户也可以在调用 \nucthesis{} 时手动指定使用系统自带的字库，如：
+% 
+% \begin{latex}
+%   \documentclass[fontset=windows]{nucthesis}
+% \end{latex}
+% 
+% 允许的选项有 \option{windows}、\option{mac}、\option{fandol},详见 \pkg{ctex}、\pkg{xeCJK}、\pkg{fontspec} 等宏包的使用说明。
+% 
+% 如在非 Windows 系统下还想使用其字体，可使用 \option{external} 选项调用包内带的 Windows 字体：
+%
+% \begin{latex}
+%   \documentclass[cjk-font=external]{sustechthesis}
+% \end{latex}
+% 
+% 允许的选项有 \option{windows}、\option{mac}、\option{fandol}、\option{external}，等。
+% 
+% \subsection{论文设置}
+% 
+% 
+% \clearpage
+% 
+% \section{实现细节}
+% 
+% \subsection{基本信息}
+%   \begin{macrocode}
+%<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
+%<cls>\ProvidesClass{nucthesis}
+%<cls>[2025/06/01 0.0.1 North University of China Thesis Template] 
+% 
+%   
+%   \end{macrocode}
+% 报错
+%   \begin{macrocode}
+\newcommand\nuc@error[1]{%
+    \ClassError{nucthesis}{#1}{}%
+}
+\newcommand\nuc@warning[1]{%
+    \ClassWarning{nucthesis}{#1}%
+}
+\newcommand\nuc@patch@error[1]{%
+    \nuc@error{Failed to patch command \protect#1}%
+}
+\newcommand\nuc@deprecate[2]{%
+    \def\nuc@@tmp{#2}%
+    \nuc@warning{%
+        The #1 is deprecated%
+        \ifx\nuc@@tmp\@empty\else
+        . Use #2 instead%
+        \fi 
+    }%
+}
+
+%   \end{macrocode}
+% 
+% 检查 \LaTeXe{} kernel 版本
+% 使用了 bibtex-gbt7714 2.0 版本的接口，故要求至少 TeX Live 2020
+% 
+% 
+%   \begin{macrocode}
+\@ifl@t@r\fmtversion{2020/01/01}{}{
+    \nuc@error{%
+        TeX Live 2020 or later version 
+        is required to compile this document%
+    }
+}
+
+%   \end{macrocode}
+% 
+% 检查编译引擎，要求使用 \XeLaTeX。
+%   \begin{macrocode}
+\RequirePackage{iftex}
+\ifXeTeX\else
+    \nuc@error{XeLaTeX is required to compile this document}
+\fi
+%   \end{macrocode}
+% 
+% \subsection{定义选项}
+% \label{sec:defoption}
+% 定义论文类型以及是否涉密
+%   \begin{macrocode} 
+%<*cls>
+\hyphenation{Thu-Thesis
+SUSTech-Thesis
+NUC-Thesis}
+\def\thuthesis{ThuThesis}
+\def\sustechthesis{SUSTechThesis}
+\def\nucthesis{NUCThesis}
+\def\version{0.0.1}
+\RequirePackage{kvdefinekeys}
+\RequirePackage{kvsetkeys}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+    family=nuc,
+    prefix=nuc@,
+    setkeys=\kvsetkeys
+}
+%   \end{macrocode}
+% 
+%   \begin{macro}{\nucsetup}
+% 提供一个 \cs{nucsetup} 命令支持 \emph{key-value} 的方式来设置。
+%   \begin{macrocode} 
+\newcommand\nucsetup[1]{%
+    \kvsetkeys{nuc}{#1}%
+}
+%   \end{macrocode}
+% 
+% 同时用 \emph{key-value} 的方式来定义这些接口：
+%   \begin{latex} 
+%       \nuc@define@key{
+%           <key> = {
+%               name = <name>,
+%               choices = {
+%                   <choice1>,
+%                   <choice2>,
+%               },
+%               default = <default>,
+%           },
+%       }
+%    \end{latex}
+%    
+% 其中 |choices| 设置允许使用的值，默认为第一个 （或者 \meta{default}）；
+% \meta{code} 是相应的内容被设置时执行的代码。
+% 
+%   \begin{macrocode} 
+\newcommand\nuc@define@key[1]{%
+    \kvsetkeys{nuc@key}{#1}%
+} 
+\kv@set@family@handler{nuc@key}{%
+
+} 
+%   \end{macrocode}
+% 
+% \cs{nucsetup} 会将 \meta{value} 存到 \cs{nuc@\meta{key}},
+% 但是宏的名字包含 “-” 这样的特殊字符时不方便直接调用，比如 |key = math-style|，
+% 这是可以用 |name| 设置 \meta{key} 的别称，比如 |key = math@style|，
+% 这样就可以通过 \cs{nuc@math@style} 来引用。
+% |default| 是定义该 \meta{key} 时默认的值，缺省为空。
+% 
+% \begin{macrocode} 
+    \@namedef{nuc@#1@@name}
+    \def\nuc@@default{}
+    \def\nuc@@choices{}
+    \kv@define@key{nuc@value}{name}{
+        \@namedef{nuc@#1@@name}{##1}
+    }
+% \end{macrocode}
+% 
+% 由于在定义接口时，\cs{nuc@\meta{key}@@code} 不一定有定义，
+% 而且在文档类/宏包中还有可能对该 |key| 的 |code| 进行添加。
+% 所以 \cs{nuc@\meta{key}@@code} 会检查如果在定义文档类/宏包时则推迟执行，否则立即执行。
+% 
+% \begin{macrocode} 
+    \@namedef{nuc@#1@@check}{}
+    \@namedef{nuc@#1@@code}{}
+% \end{macrocode}
+% 
+% 保存下 |choices = {}| 定义的内容，在定义 \cs{nuc@\meta{name}} 后再执行。
+% 
+% \begin{macrocode} 
+    \kv@define@key{nuc@value}{choices}{}
+    \def\nuc@@choices{##1}
+    \@namedef{nuc@#1@@reset}{}
+% \end{macrocode}
+% 
+% \cs{nuc@\meta{key}@check} 检查 |value| 是否有效，并设置 \cs{ifnuc@\meta{name}@\meta{value}}。
+
+
+    % Norbury注：\begin{macrocode} \end{macrocode} 在`.dtx`文件中用于包裹宏代码，既用于生成 `.sty/.cls` 文件，也用于文档展示。
+
+% \begin{macrocode}
+
+    % Norbury注：\@namedef{abc} 用于定义宏，且宏的名称为name。其作用相当于 \def\abc 
+
+	\@namedef{nuc@#1@@check}{%
+
+		\@ifundefined{%
+
+			ifnuc@\@nameuse{nuc@#1@@name}@\@nameuse{nuc@\@nameuse{nuc@#1@@name}}%
+		}{%
+			\nuc@error{Invalid value "#1 = \@nameuse{nuc@#1@@name}"}%
+		}%
+		\@nameuse{nuc@#1@@reset}%
+		\@nameuse{nuc@\@nameuse{nuc@#1name}@\@nameuse{nuc@\@nameuse{nuc@#1@@name}}true}%
+
+	}
+
+	% Norbury注：\kv@define@key 用于解析和设置键值对的宏命令。
+	\kv@define@key{nuc@value}{default}{
+		\def\nuc@@default{##1}
+	}
+
+	\kvsetkeys{nuc@value}{#2}
+	\@namedef{nuc@\@nameuse{nuc@#1@@name}}{}
+
+% \end{macrocode}
+
+	% 第一个\meta{choice} 设为 \meta{default}，并且对每个 \meta{choice} 定义 \cs{ifnuc@\meta{name}@\meta{choice}}
+
+% \begin{macrocode}
+	% Norbury注: \kv@set@family@handler 来源于kvsetkeys包中，用于设置某个“键值”族。
+	\kv@set@family@handler{nuc@choice}{
+		\ifx\nuc@@default\@empty 
+		\def\nuc@@default{##1}
+		\fi 
+		\expandafter\newif\csname ifnuc@\@nameuse{nuc@#1@@name}@##1\endcsnaem
+		\expandafter\g@addto@macro\csname nuc@#1@@reset\endcsname{
+			\@nameuse{nuc@\@nameuse{nuc@#1@@name}@##1false}
+		}
+	}
+	\kvsetkeys@expandafter{nuc@choice}{\nuc@@choices}
+% \end{macrocode}
+%
+% 将 \meta{default} 赋值到 \cs{nuc@\meta{name}}, 如果非空，则执行相应的代码
+
+% \begin{macrocode}
+	\expandafter\let\csname nuc@\@nameuse{nuc@#1@@name}\endcsname\nuc@@default
+	\expandafter\ifx\csname nuc@\@nameuse{nuc@#1@@name}\endcsname\@empty\else 
+	\@nameuse{nuc@#1@@check}
+	\fi 
+
+% \end{macrocode}
+
+% 定义 \cs{nucsetup} 接口。
+% \begin{macrocode}
+	\kv@define@key{nuc}{#1}{
+		\@namedef{nuc@\@nameuse{nuc@#1@@name}}{##1}
+		\@nameuse{nuc@#1@@check}
+		\@nameuse{nuc@#1@@code}
+	}
+	
+% \end{macrocode}
+
+% 定义接口向 |key| 添加 |code| 
+
+% \begin{macrocode}
+	\newcommand\nuc@option@hook[2]{
+		\expandafter\g@addto@macro\csname nuc@#1@@code\endcsname{#2}
+	}
+% \end{macrocode}
+
+% \begin{macrocode}
+	\nuc@define@key{
+		degree = {
+			choices = {
+				bachelor, % 学士
+				master, % 硕士
+				doctor, % 博士
+				postdoc, % 博士后
+			},
+			default = master,
+		},
+		degree-type = {
+			default = academic,
+			choices = {
+				academic,
+				professional,
+			},
+			name = degree@type,
+		},
+	}
+% \end{macrocode}
+
+% 论文的主要语言
+% \begin{macrocode}
+	main-language = {
+		name = main@language,
+		choices = {
+			chinese,
+			english,
+		},
+	},
+% \end{macrocode}
+
+% 用于设置局部语言。
+% \begin{macrocode}
+	language = {
+		choices = {
+			chinese,
+			english,
+		},
+	},
+% \end{macrocode}
+
+% 字体
+% \begin{macrocode}
+	fontset = {
+		choices = {
+			windows,
+			mac,
+			ubuntu,
+			fandol,
+			none,
+		},
+		default = none,
+
+	},
+	system = {
+		choices = {
+			mac,
+			unix,
+			windows,
+			auto,
+		},
+		default = auto,
+	},
+
+	font = {
+		choices = {
+			times,
+			termes,
+			auto,
+			none,
+			external,
+		},
+		default = auto,
+	},
+	cjk-font = {
+		name = cjk@font,
+		choices = {
+			windows,
+			mac,
+			noto,
+			fandol,
+			auto,
+			none,
+			external,
+		},
+		default = auto,
+	},
+	math-font = {
+		name = math@font,
+		choices = {
+			cambria,
+			xits,
+			stix,
+			none,
+			times,
+		},
+		default = cambria,
+	},
+	math-style = {
+		name = math@style,
+		choices = {
+			GB,
+			TeX,
+		},
+	},
+
+% \end{macrocode}
+
+% 选择打印版还是用于上传的电子版
+% \begin{macrocode}
+	output = {
+		choices = {
+			print,
+			electronic,
+		},
+		default = print,
+	},
+
+	\newif\ifnuc@degree@graduate
+	\newcommand\nuc@set@graduate{
+		\nuc@degree@graduatefalse
+		\ifnuc@degree@doctor
+		    \nuc@degree@graduatetrue
+		\fi 
+		\ifnuc@degree@master
+		    \nuc@degree@graduatetrue
+		\fi 
+	}
+	\nuc@set@graduate
+	\nuc@option@hook{degree}{
+		\nuc@set@graduate
+	}
+% \end{macrocode}
+
+% 设置默认 \option{openany}
+
+% \begin{macrocode}
+	\DeclareBoolOption[false]{openright}
+	\DeclareComplementaryOption{openany}{openright}
+% \end{macrocode}
+
+% \option{raggedbottom} 选项（默认开启）
+% \begin{macrocode}
+	\DeclareBoolOption[true]{raggedbottom}
+% \end{macrocode}
+
+% 将选项传递给 \pkg{ctexbook}
+% \begin{macrocode}
+	\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+
+% \end{macrocode}
+
+% 解析用户传递的选项，并加载 \pkg{ctexbook}
+	
+% \begin{macrocode}
+	\ProcessKeyvalOptions* 
+% \end{macrocode}
+%
+% 设置默认 \option{openany}
+% \begin{macrocode} 
+	\ifnuc@openright
+	\PassOptionsToClass{openright}{book}
+	\else
+	\PassOptionsToClass{openany}{book}
+	\fi
+% \end{macrocode}
+% 
+% 使用 \pkg{ctexbook} 类，优于调用 \pkg{ctex} 宏包。
+% 
+% \begin{macrocode} 
+	\PassOptionsToPackage{quiet}{fontspec}
+	\LoadClass[a4paper,UTF8,zihao=-4,scheme=plain,fontset=none]{ctexbook}[2017/04/01]
+% \end{macrocode}
+% 
+%  
+% \subsection{装载宏包}
+% \label{sec:loadpackage}
+% 
+% 引用的宏包和相应的定义。
+% \begin{macrocode} 
+	\RequirePackage{etoolbox} % etoolbox 宏包用于定义编号。
+	\RequirePackage{filehook} % filehook 宏包用于定位error
+	\RequirePackage{xparse}
+% \end{macrocode}
+% 
+% 利用 \pkg{textcase} 英文大小写转换。
+% \begin{macrocode}
+	\RequirePackage{textcase}
+% \end{macrocode}
+% 
+% \begin{macrocode} 
+	\RequirePackage{geometry}
+% \end{macrocode}
+% 
+% 利用 \pkg{fancyhdr} 设置页眉页脚
+% \begin{macrocode} 
+	\RequirePackage{fancyhdr}
+% \end{macrocode}
+% 
+% 利用 \pkg{titletoc} 设置目录
+% \begin{macrocode}
+	\RequirePackage{titletoc}
+% \end{macrocode}
+% 
+% 利用 \pkg{notoccite} 避免目录中引用编号混乱。 
+% \begin{macrocode} 
+	\RequirePackage{notoccite}
+% \end{macrocode}
+% 
+% 
+% \AmSTeX\ 宏包，用于排版出更加漂亮的公式。
+% \begin{macrocode}
+	\RequirePackage{amsmath}
+% \end{macrocode}
+% 
+% 使用 \pkg{unicode-math} 处理数学字体。
+% \begin{macrocode} 
+	\RequirePackage{unicode-math}
+% \end{macrocode}
+% 
+% 使用 \pkg{graphicx} 提供图形支持
+% \begin{macrocode} 
+	\RequirePackage{graphicx}
+% \end{macrocode}
+% 
+% 使用 \pkg{subcaption} 
+% \begin{macrocode} 
+	\RequirePackage[labelformat=simple]{subcaption}
+% \end{macrocode}
+% 
+% 使用 \pkg{pdfpages} 便于插入扫描后的授权说明和声明页 PDF 文档。
+% \begin{macrocode} 
+	\RequirePackage{pdfpages}
+	\includepdfset{fitpaper=true}
+% \end{macrocode}
+% 
+% 
+% 列表环境
+% \begin{macrocode} 
+	\RequirePackage[shortlabels]{enumitem}
+	\RequirePackage{environ} 
+% \end{macrocode}
+% 
+% 禁止 \LaTeX{} 自动调整多余的页面底部空白，，并保持脚注仍然在底部。
+% 脚注按页编号。。
+% \begin{macrocode} 
+	\ifnuc@raggedbottom
+	\RequirePackage[bottom,perpage,hang]{footmisc}
+	\raggedbottom 
+	\else
+	\RequirePackage[perpage,hang]{footmisc}
+	\fi
+% \end{macrocode}
+% 
+% 使用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两端对齐，，并可以避免
+% \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes.
+% \begin{macrocode} 
+	\RequirePackage{xeCJKfntef}
+	\RequirePackage{soul}
+% \end{macrocode}
+% 
+% 表格控制 
+% \begin{macrocode} 
+	\RequirePackage{array}
+% \end{macrocode}
+% 
+% 使用三线表: \cs{toprule},\cs{midrule} \cs{bottomrule}
+% \begin{macrocode} 
+	\RequirePackage{booktabs}
+% \end{macrocode}
+% 
+% 
+% \begin{macrocode} 
+	\RequirePackage{url} 
+% \end{macrocode}
+% 
+% 如果用户未在导言区调用 \pkg{biblatex}，，则默认使用 \pkg{natbib}
+% \begin{macrocode} 
+	\AtEndPreamble{
+		\@ifpackageloaded{biblatex}{}{
+			\@ifpackageloaded{apacite}{}{
+				\RequirePackage{natbib}
+			}
+		}
+	}
+	\AtEndOfPackageFile*{natbib}{
+		\@ifpackageloaded{apacite}{}{
+			\RequirePackage{bibunits}
+		}
+	}
+
+% \end{macrocode}
+% 
+% 对冲突的宏包报错。
+% \begin{macrocode} 
+	\newcommand\nuc@package@conflict[2]{
+		\AtBeginOfPackageFile*{#2}{
+			\nuc@error{The "#2" package is incompatible with required "#1"}
+		}
+	}
+	\nuc@package@conflict{unicode-math}{amscd}
+	\nuc@package@conflict{unicode-math}{amsfonts}
+	\nuc@package@conflict{unicode-math}{amssymb}
+	\nuc@package@conflict{unicode-math}{bbm}
+	\nuc@package@conflict{unicode-math}{bm}
+	\nuc@package@conflict{unicode-math}{eucal}
+	\nuc@package@conflict{unicode-math}{eufrak}
+	\nuc@package@conflict{unicode-math}{mathrsfs}
+
+% 禁止导入 setspace 包 
+\AtBeginOfPackageFile*{setspace}{
+	\nuc@error{The "setspace" package is incompatible with table environment, which will make invalidate the float format}
+}
+% \end{macrocode}
+% 
+% 
+% \subsection{页面设置}
+% \label{sec:layout}
+% 研究生 《写作指南》：：
+% 页边距：上边距为 3.5 厘米，下边距为 3 厘米，左边距为 3 厘米，下边为 2 厘米。
+% 页眉距边界：2.5 厘米，页脚距边界：1.8 厘米。
+% 
+% 本科生 《写作指南》
+% % 页边距：上边距为 2.5 厘米，其余均为 2 厘米。
+% 页眉距边界：2.0 厘米，页脚距边界：1.5 厘米。
+%
+% 
+%  \pkg{fancyhdr} 的页眉是沿底部对齐的，所以只需设置 \cs{headsep}，
+% \cs{headheight} 可以适当增加高度允许多行页眉。
+% 
+% 研究生：\cs{headsep} = $\SI{3.5}{cm} - $\SI{2.5}{cm} - \SI{10.5}{bp} \times 1.3
+% \approx \SI{0.3}{cm}
+% \begin{macrocode} 
+	\geometry{
+		paper = a4paper, % 210 * 297mm
+		marginparwidth = 2cm, % 侧边注释区域宽度
+		marginparsep = 0.5cm, % 侧边注释与正文之间的宽度
+	}
+	\newcommand\nuc@set@geometry{
+		\ifnuc@degree@bachelor{
+			\geometry{
+				top        = 2.5cm,
+				bottom     = 2.0cm,
+				left       = 2.0cm,
+				right      = 2.0cm,
+				headheight = 1.9cm,
+				headsep    = 1.9cm,
+				footskip   = 1.45cm, 
+			}
+			\ifnuc@output@print
+				\geometry{
+					left   = 3.2cm,
+					right  = 3cm,
+				}
+			\else 
+				\geometry{
+					hmargin= 3cm,
+				}
+			\fi 
+		\else 
+			\geometry{
+				top        = 3.5cm,
+				bottom     = 3.0cm,
+				left       = 3.0cm,
+				right      = 2.0cm,
+				headheight = 2.7cm,
+				headsep    = 0.5cm,
+				footskip   = 
+
+			}
+		}
+	}
+ 
+
+
+
+
+
+
+
+
+%  
