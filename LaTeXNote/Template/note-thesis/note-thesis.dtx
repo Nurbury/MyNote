@@ -1,0 +1,158 @@
+\iffalse meta-comment
+
+Copyright (C) 2025 by Norbury <NorburyMJ@outlook.com>
+
+
+\fi
+
+
+\iffalse
+%<*driver>
+\ProvidesFile{MyNoteThesis.dtx}[2025 Note Thesis Template]
+\documentclass{ltxdoc}
+\usepackage{dtx-style}
+\EnableCrossrefs
+\CodelineIndex
+\begin{document}
+    \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% 
+
+\fi 
+
+% \DoNotIndex{\newenvironment,\@bsphack,\@empty,\@esphack,\sfcode}
+% \DoNotIndex{\addtocounter,\label,\let,\linewidth,\newcounter}
+% \DoNotIndex{\noindent,\normalfont,\par,\parskip,\phantomsection}
+% \DoNotIndex{\providecommand,\ProvidesPackage,\refstepcounter}
+% \DoNotIndex{\RequirePackage,\setcounter,\setlength,\string,\strut}
+% \DoNotIndex{\textbackslash,\texttt,\ttfamily,\usepackage}
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
+% \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\edef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\sffamily,\interlinepenalty}
+% \DoNotIndex{\textbf,\textit,\textsf,\textsc}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright,\ref}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
+% 
+
+\GetFileInfo{\jobname.dtx}
+
+\def\indexname{索引}
+\IndexPrologue{\section{\indexname}}
+
+\title{\bfseries\color{violet}
+    \notethesis : 笔记模板
+}
+\author{{\fangsong Norbury}[5pt]\texttt{NorburyMJ@outlook.com}}
+\date{v\fileversion\ (\filedata)}
+\maketitle\thispagestyle{empty}
+
+
+\section{实现细节}
+
+\subsection{基本信息}
+\begin{macrocode}
+    <cls>\NeedsTeXFormat{LaTeX2e}[2019]
+    <cls>\ProvidesClass{notethesis}
+    <cls>[2025/07/01 note thesis template]
+\end{macrocode}
+
+报错
+\begin{macrocode}
+    \newcommand\note@error[1]{
+        \ClassError{notethesis}{#1}{}
+    }
+    \newcommand\note@warning[1]{
+        \ClassWarning{notethesis}[#1]
+    }
+    \newcommand\note@patch@error[1]{
+        \note@error{Failed to patch command \protect#1}
+    }
+    \newcommand\note@deprecate[2]{
+        \def\note@@tmp{#2}
+        \note@warning{
+            The #1 is deprecated
+            \ifx\note@@tmp\@empty\else
+                .Use #2 instead
+            \fi
+        }
+    }
+\end{macrocode}
+
+
+检查 \LaTeXe{} kernel 版本
+
+\begin{macrocode}
+    \@ifl@t@r\fmtversion{2020/01/01}{}{
+        \note@error{
+            TeX Live 2020 or later version is required to compile this document.
+        }
+    }
+\end{macrocode}
+
+检查编译引擎，要求使用 \XeLaTeX 
+\begin{macrocode}
+    \RequirePackage{iftex}
+    \ifXeTeX\else
+        \note@error{XeLaTeX is required to compile this document}
+    \fi
+\end{macrocode}
+
+\subsection{定义选项}
+\label{sec:defoption}
+定义论文类型以及是否涉密
+\begin{macrocode}
+    <*cls>
+    \hyphenation{Note-Thesis} % 告诉 TeX 在断词时如何正确地在连字符处断开这些单词。
+    \def\notethesis{NoteThesis}
+    \def\version{0.0.1}
+    \RequirePackage{kvdefinekeys}
+    \RequirePackage{kvsetkeys}
+    \RequirePackage{kvoptions}
+    \SetupKeyValOptions{
+        family=note,
+        prefix=note@,
+        setkeys=\kvsetkeys
+    }
+     
+\end{macrocode}
+
+\begin{macro}{\notesetup}
+    提供一个 \cs{notesetup} 命令支持 \emph{key-value} 的方式设置。
+    \begin{macrocode}
+        \newcommand\notesetup[1]{
+            \kvsetkeys{note}{#1}
+        }
+    \end{macrocode}
+
+\end{macro}
+
+% 同时用 \emph{key-value} 的方式来定义这些接口：
+% \begin{latex}
+%   \note@define@key{
+%     <key> = {
+%       name = <name>,
+%       choices = {
+%         <choice1>,
+%         <choice2>,
+%       },
+%       default = <default>,
+%     },
+%   }
+% \end{latex}
+% 
+
+\begin{macrocode}
+    \newcommand\note@define@key[1]{
+        \kvsetkeys{note@key}{#1}
+    }
+    \kv@set@family@handler{note@key}{}
+\end{macrocode}

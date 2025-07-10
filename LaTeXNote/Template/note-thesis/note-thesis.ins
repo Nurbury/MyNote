@@ -1,0 +1,31 @@
+% Copyright (C) 2025 by Norbury <NorburyMJ@outlook.com>
+
+% This file is part of my note thesis package project. 
+% -----------------------------------
+
+% This work may be distributed and/or modified under the conditions of the LaTeX project public License either version 1.3 
+
+% This latest version of this license is in 
+% https://github.com/
+
+
+
+% 加载 `docstrip`工具
+\input docstrip
+
+\askforoverwritefalse
+\keepsilent % 启动静默模式，避免输出大量冗余信息。
+
+
+\usedir{te} % 指定生成的 .sty 文件应被写入的位置
+
+\preamble 
+
+\endpreamble 
+
+\generate{
+    \file{\jobname.cls}{\from{\jobname.dtx}{cls}}
+    \file{dtx-style.sty}{\from{\jobname.dtx}{dtx-style}}
+}
+
+\endbatchfile
