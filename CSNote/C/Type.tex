@@ -28,8 +28,20 @@
 在C语言中的 int 类型有两种表示方式，1.unsigned 表示所有从0~$2^{32}$的值，2. signed 表示的一半正值一半负值。
 
 
-\subsection{float}
+\subsection{float & double}
+float 拥有32bits用于表示单精度浮点数。
+
+这32个bits可以划分为三个部分，其中最低的23 bits 对尾数 (mantissa) 编码，前面的8位对指数（幂，exponent)编码，最高位为符号位 s （s = 1, number = negative, s = 0, number = positive) 。 
+
+double 拥有64bits 用于表示双精度浮点数。
+
+这64bits中，52bits 用于对尾数编码，11bits用于对指数编码，最后1bit表示符号位。
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{../figures/floatBits.jpg}
+	\label{fig:floatBtis}
+\end{figure}
 
 
-\subsection{double}
 
