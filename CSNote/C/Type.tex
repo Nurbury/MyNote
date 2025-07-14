@@ -1,4 +1,5 @@
 \section{Type}
+
 \subsection{进制}
 常用的进制包括 \textbf{二进制、八进制、十进制、十六进制}
 
@@ -64,4 +65,26 @@ double 拥有64bits 用于表示双精度浮点数。
 \textbf{下溢 underflow} : 产生的数字太小，无法由原来的类型所表示。
 
 \subsection{String}
+String 是由一系列的character以及空终止符结尾 ('\0')的数据类型，
+
+String 使用 \textbf{%s} 输出结果 。
+
+
+\subsection{struct}
+C语言的基本数据类型只有 char 、int 、float 、double 当我们需要使用其他类型（如String、Tree、Stuck) 时，必须使用 struck 进行定义。
+
+结构体中的属性需要使用 "." 进行访问。
+
+\subsection{枚举类型 enumerated}
+枚举类型是命名常量的类型。
+
+enum threat_level_t {
+  LOW,
+  GUARDED,
+  ELEVATED,
+  HIGH,
+  SEVERE
+};
+
+
 
