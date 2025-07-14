@@ -86,11 +86,81 @@ const char NEWLINE = '\n';
 \end{lstlisting}
 \end{minipage}
 
-变量是可以变化的，
+变量是程序可操作的存储区的名称。
+
+\noindent
+\begin{lstlisting}[
+	language=c,
+	caption={变量设置},
+	xleftmargin=20pt,
+]
+int age; // 定义整型变量
+float age; // 定义浮点型变量
+char grade; // 定义字符型变量
+int *ptr; // 定义整型指针变量
+int i,j,k; // 定义多个整型变量
+
+\end{lstlisting}
+
+\begin{table}
+	\centering
+	\begin{tabular}
+		\toprule
+		类型 && 默认值 \\
+		整型变量 && 0 \\
+		浮点型变量 && 0.0 \\
+		字符型变量 && '\0' \\
+		指针变量 && NULL \\
+	\end{tabular}
+\end{table}
 
 
+\textbf{变量的声明} 在C语言中有两种情况
 
+\begin{itemize}
+	\item 一种是需要开辟存储空间的。例如 int a 在声明时就建立了存储空间。
+
+	\item 另一种是不需要建立存储空间的，通过使用extern关键字声明。
+		
 	
+\end{itemize}
+
+\subsection{判断}
+
+C语言将任何\textbf{非零}和\textbf{非空}的值假定为\textbf{true},将\textbf{零}或\textbf{null}假定为\textbf{false}。
+
+\begin{itemize}
+	\item if语句
+	\item if \dots else 语句
+	\item 嵌套的if语句
+	\item switch 语句
+	\item 嵌套的switch语句
+
+\end{itemize}
+
+\subsection{循环}
+
+循环类型
+\begin{itemize}
+	\item while
+	\item for 
+	\item do \dots while
+\end{itemize}
+
+循环控制语句
+
+\begin{table}
+	\centering
+	\begin{tabular}
+		\toprule
+		控制语句 && 描述 \\
+		\midrule
+		break && 终止循环，程序将继续执行循环后的下一条语句。\\
+		continue && 本次循环结束，重新开启下一次循环 \\
+		goto && 跳转到被标记的语句
+	\end{tabular}
+\end{table}
+
 
 
 	
