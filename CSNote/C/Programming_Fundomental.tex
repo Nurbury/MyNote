@@ -1,5 +1,6 @@
 \section{C语言基础}
 
+
 \subsection{标识符和关键字}
 C语言以数字、字母、下画线组成。其中以字母和下画线作为开头。
 
@@ -67,6 +68,103 @@ C语言以数字、字母、下画线组成。其中以字母和下画线作为�
 	\item 隐式类型转换: 自动类型转换，通常是将小的数据类型转换为大的数据类型。
 	\item 显式类型转换: 该类型转换需要使用强制类型转换符，将一种类型的值强制转换为另一种类型。
 \end{itemize}
+
+
+\begin{figure}
+	\centering
+	\includegraphic{./figures/TypeChange.png}
+
+\end{figure}
+
+
+\subsubsection{其他数据类型}
+
+\begin{itemize}
+	\item enum (枚举)
+	\item struct (结构体)
+	\item union (共用体)
+
+\end{itemize}
+
+\subsubsection{共用体}
+\textbf{共用体} 是一种特殊的数据类型，允许在同一个内存位置存储不同的数据类型。但共用体中的所有成员都占用同一存储空间，所以同一时间只能一个成员出场。
+
+
+\begin{lstlisting}[
+	language=c,
+	caption={其他数据类型},
+	xleftmargin=20pt
+]
+// 共用体
+union [union tag]
+{
+	member definition;
+	member definition2;
+
+} [one or more union variables];
+
+// Union Example
+union Data
+{
+	int i;
+	float f;
+	char str[20];
+} data;
+
+\end{lstlisting}
+
+\subsubsection{结构体}
+\textbf{结构体}是C语言提供给用户自定义的可用的数据类型，允许用户存储不同类型的数据项。
+
+\begin{lstlisting}[
+	language=c,
+	caption={结构体},
+	xleftmargin=20pt
+]
+// 定义结构体
+struct tag{
+	member-list;
+	member-list;
+	\dots
+} variable-list;
+
+// Example 
+struct Books {
+	char title[50];
+	char author[50];
+	char subject[100];
+	int book_id;
+} book;
+
+struct
+{
+    int a;
+    char b;
+    double c;
+} s1;
+
+//此声明声明了拥有3个成员的结构体，分别为整型的a，字符型的b和双精度的c
+//结构体的标签被命名为SIMPLE,没有声明变量
+struct SIMPLE
+{
+    int a;
+    char b;
+    double c;
+};
+//用SIMPLE标签的结构体，另外声明了变量t1、t2、t3
+struct SIMPLE t1, t2[20], *t3;
+
+//也可以用typedef创建新类型
+typedef struct
+{
+    int a;
+    char b;
+    double c;
+} Simple2;
+//现在可以用Simple2作为类型声明新的结构体变量
+Simple2 u1, u2[20], *u3;
+
+\end{lstlisting}
 
 
 \subsection{常量 和 变量}
@@ -164,4 +262,34 @@ C语言将任何\textbf{非零}和\textbf{非空}的值假定为\textbf{true},�
 
 
 	
-        
+\subsection{数组}
+数组是用于存储一系列相同类型的数据。
+
+\begin{figure}
+	\centering
+	\includegraphic{./figures/Array.png}
+
+\end{figure}
+
+\begin{lstlisting}[
+	language=c,
+	caption={数组声明},
+	xleftmargin=20pt,
+]
+type arrayname[size]; // 声明数组
+
+// Example
+int grades[10];
+
+// 初始化数组
+int grades[5] = {10,20,30,40,50}; // 方式一
+
+int grades[] = {10,20,30,40,50}; // 方式二
+
+// 获取数组长度
+int size = sizeof(grades);
+
+\end{lstlisting}
+
+
+
